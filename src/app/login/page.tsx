@@ -38,7 +38,6 @@ const Login = () => {
 
     const data = await response.json();
     if (response.ok) {
-      alert("Login successful!"); // Handle success
       console.log(data);
       router.push(data.redirectTo); // Use redirectTo from response to navigate
     } else {

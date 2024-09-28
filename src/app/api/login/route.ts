@@ -13,7 +13,7 @@ function createJWT(userData: { userId: string, email: string }) {
 
 export async function POST(req: Request) {
     const client = await clientPromise;
-    const db = client.db('Honeycomb'); // Replace with your actual database name
+    const db = client.db('Honeycomb'); 
 
     try {
         const { email, password } = await req.json(); // Get email and password from the request

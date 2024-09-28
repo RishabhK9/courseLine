@@ -1,4 +1,4 @@
-import { ThemeProvider } from '../context/ThemeContext';
+import { ThemeProvider } from "../context/ThemeContext";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -6,40 +6,38 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: "https://startup.exchange",
+  metadataBase: "https://honeycomb.tech",
   title: {
-    default: "Startup Exchange | The path to moving your ideas forward awaits.",
-    template: "%s | Startup Exchange",
+    default: "Honeycomb.ai",
+    template: "",
   },
-  description: "Startup Exchange is a student-led organization curating the largest community for college builders, makers, and creators. We enable you to build, launch, and grow your ideas.",
-  keywords: ["startup", "startup exchange", "college startups", "college entrepreneurship", "startup accelerators"],
+  description: "",
+  keywords: ["honeycomb", "learn", "roadmaps", "college planning", ""],
   twitter: {
     card: "summary_large_image",
-    site: "@startupxchange",
-    creator: "@startupxchange",
-    images: "https://startup.exchange/head/embed.png",
+    site: "@honeycomb",
+    creator: "@honeycomb",
+    images: "",
     title: {
-      default: "Startup Exchange | The path to moving your ideas forward awaits.",
-      template: "%s | Startup Exchange",
+      default: "",
+      template: "",
     },
-    description:
-      "Startup Exchange is a student-led organization curating the largest community for college builders, makers, and creators. We enable you to build, launch, and grow your ideas.",
+    description: "Honeycomb",
   },
   openGraph: {
-    url: "https://startup.exchange/",
+    url: "https://honeycomb.tech/",
     type: "website",
     locale: "en_US",
-    siteName: "Startup Exchange",
+    siteName: "Honeycomb",
     title: {
-      default: "Startup Exchange | The path to moving your ideas forward awaits.",
-      template: "%s | Startup Exchange",
+      default: "",
+      template: "",
     },
-    description:
-    "Startup Exchange is a student-led organization curating the largest community for college builders, makers, and creators. We enable you to build, launch, and grow your ideas.",
+    description: "",
     images: [
       {
-        url: "https://startup.exchange/head/embed.png",
-        alt: "Startup Exchange: The path to moving your ideas forward awaits.",
+        url: "",
+        alt: "",
       },
     ],
   },
@@ -50,7 +48,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <ThemeProvider>
       <html lang="en">

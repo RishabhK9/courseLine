@@ -1,35 +1,33 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import { updateSession } from 'utils/supabase/middleware'
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import jwt from 'jsonwebtoken';
 
-export async function middleware(request: NextRequest) {
-  const host = request.headers.get('host')
-  console.log('Middleware hit, host:', host)
-  const url = request.nextUrl.clone()
+// JWT Secret (stored in environment variable)
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
-  // Handle subdomain routing
-  if (host === 'partner.startup.exchange') {
-    url.pathname = `/partner${url.pathname}`
-    return NextResponse.rewrite(url)
+// Function to verify JWT token
+function verifyJWT(token: string) {
+  try {
+    return jwt.verify(token, JWT_SECRET);
+  } catch (error) {
+    return null;
   }
-
-  if (host === 'admin.startup.exchange') {
-    url.pathname = `/admin${url.pathname}`
-    return NextResponse.rewrite(url)
-  }
-
-  // Update session for all other routes
-  const response = await updateSession(request)
-
-  // If updateSession returns a response, return it
-  if (response) return response
-
-  // Otherwise, continue with the request
-  return NextResponse.next()
 }
 
+// This middleware will be executed for each request
+export function middleware(req: NextRequest) {
+  const token = req.cookies.get('auth_token')?.value;
+
+  // If there's no token or if token verification fails, redirect to login
+  if (!token || !verifyJWT(token)) {
+    return NextResponse.redirect(new URL('/login', req.url));
+  }
+
+  // If the token is valid, continue the request
+  return NextResponse.next();
+}
+
+// Specify paths for middleware to apply to (e.g., for protecting certain routes)
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
-}
+  matcher: ['/dashboard/:path*', '/roadmap/:path*'], // Apply middleware to specific routes
+};

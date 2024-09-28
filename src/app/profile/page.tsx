@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
-import dynamic from 'next/dynamic';
-import { createClient } from 'utils/supabase/client'
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Images from '../../assets/images/';
+import Images from "../../assets/images/";
 import {
   plus_jakarta_sans_regular,
   plus_jakarta_sans_medium,
@@ -13,15 +12,12 @@ import {
   plus_jakarta_sans_bold,
   plus_jakarta_sans_extrabold,
   messina_book,
-  messina_semibold
-} from '../fonts';
+  messina_semibold,
+} from "../fonts";
 
 const ProfilePage = () => {
-  const [activeTab, setActiveTab] = useState('profile');
-  return (
-    <>
-    </>
-  );
+  const [activeTab, setActiveTab] = useState("profile");
+  return <></>;
 };
 
 export default ProfilePage;

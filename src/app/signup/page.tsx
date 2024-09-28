@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { plus_jakarta_sans_regular, plus_jakarta_sans_bold } from "../fonts";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// import GradientBackground from "../../components/GradientBackground";
+import GradientBackground from "../../components/GradientBackground";
 
 const SignUp = () => {
   const { theme } = useTheme();
@@ -38,7 +38,7 @@ const SignUp = () => {
 
       if (response.ok) {
         // Redirect to home page or login page on successful signup
-        router.push("/home");
+        router.push("/dashboard");
       } else {
         const data = await response.json();
         alert(data.error || "Signup failed");
@@ -50,7 +50,7 @@ const SignUp = () => {
   };
 
   return (
-    // <GradientBackground>
+    <GradientBackground>
       <div
         className={`min-h-screen ${plus_jakarta_sans_regular} flex flex-col`}
       >
@@ -138,7 +138,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-    // </GradientBackground>
+    </GradientBackground>
   );
 };
 

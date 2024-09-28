@@ -7,7 +7,6 @@ import Image from "next/image";
 import Images from '../../assets/images';
 import Link from 'next/link';
 
-import { createClient } from 'utils/supabase/client'
 import { redirect } from 'next/navigation'
 
 export default function ProfileLayout({
@@ -19,6 +18,7 @@ export default function ProfileLayout({
   const [selectedTab, setSelectedTab] = useState('profile');
 
   return (
-    
+    <>
+    </>
   );
 }

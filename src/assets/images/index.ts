@@ -85,7 +85,6 @@ type ImagesType = {
 
 };
 
-
 const Images: ImagesType = {
     alert,
     help,

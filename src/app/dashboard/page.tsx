@@ -16,8 +16,25 @@ const Dashboard = () => {
   const [showRoadmapForm, setShowRoadmapForm] = useState(false);
 
   /** Redirect to landing page on signout */
-  const handleSignout = () => {
-    router.push('/'); /** Replace with the landing page route */
+  const handleSignout = async () => {
+    try {
+      const response = await fetch('/api/signout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      if (response.ok) {
+        console.log('Logout successful');
+        // Redirect the user to the login or home page
+        window.location.href = '/';
+      } else {
+        console.error('Error logging out:', await response.json());
+      }
+    } catch (error) {
+      console.error('Unexpected error during logout:', error);
+    }
   };
 
   return (
